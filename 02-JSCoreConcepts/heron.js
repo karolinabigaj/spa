@@ -1,4 +1,4 @@
-// boki trójkąta
+// boki trójkąta check
 //a = 3;
 b = 4;
 c = 5;
