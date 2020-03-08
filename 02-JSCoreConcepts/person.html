@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+            <script>
+				class Person{
+					constructor(imie, nazwisko){
+						this.imie=imie;
+						this.nazwisko=nazwisko;
+					}
+					
+					uppercaseSurname(){
+						console.log(this.imie, this.nazwisko.toUpperCase());
+					}
+					
+					inicjaly(){
+						let imieInicjal = this.imie.charAt(0);
+						let nazwiskoInicjal = this.nazwisko.charAt(0);
+						console.log(imieInicjal+"."+nazwiskoInicjal+".");
+					}
+				}
+				
+				ja = new Person('Karolina', 'Bigaj');
+				ja.uppercaseSurname();
+				ja.inicjaly();
+				jan = new Person('Jan', 'Kowalski');
+				jan.uppercaseSurname();
+				jan.inicjaly();
+				
+            </script>
+    </body>
+</html>
