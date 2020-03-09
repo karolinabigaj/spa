@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="yellowBackground()">
+		<h1 onclick="addPart2()">Another Brick in the Wall</h1>
+		<h3 onclick="bandDescription()">Pink Floyd</h3>
+		<p onclick="italian()" oncopy="noRights()">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,13 +15,36 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p id="description" style="visibility: hidden;" onclick="image()">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
 		<script>
-			// a JavaScript code here ...
+			function addPart2(){
+				let part2 = document.createTextNode(" Part2"); 
+				document.getElementsByTagName("h1")["0"].appendChild(part2);
+			}
 			
+			function bandDescription(){
+				document.getElementsByTagName("p")["1"].setAttribute("style", "visibility: visible;");
+			}
+			
+			function italian(){
+				document.getElementsByTagName("p")["0"].setAttribute("style", "font-style: italic;");
+			}
+			
+			function yellowBackground(){
+				document.body.style.background = "yellow";
+			}
+			
+			function noRights(){
+				alert("COPYRIGHT MESSAGE");
+			}
+			
+			function image(){
+				let imgg = document.createElement("img");
+				imgg.src ="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg";
+				document.body.appendChild(imgg);
+			}
 		</script>
 	</body>
 </html>
