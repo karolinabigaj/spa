@@ -24,6 +24,10 @@
 			let newItem = document.getElementById("item").value;
             $("ol").append("<li>" + newItem + "</li>");
         });
+		
+		$("ol").on("dblclick", "li", function () {
+            $(this).remove();
+        });
     </script>
 </body>
 
