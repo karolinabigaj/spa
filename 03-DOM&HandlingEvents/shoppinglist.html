@@ -4,12 +4,13 @@
 <head>
     <title>Shopping List</title>
     <meta charset="UTF-8">
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">  </script>
 </head>
 
 <body>
     <h1>Shopping List</h1>
     <p>
-        New item: <input type="text" name="item">
+        New item: <input type="text" id="item" >
         <button type="button">Add</button>
     </p>
     <h3>List of items</h3>
@@ -18,10 +19,11 @@
         <li>breakfast cereal</li>
         <li>bread</li>
     </ol>
-
     <script>
-    	// a JavaScript code here ...
-
+    	$("button").click(function () {
+			let newItem = document.getElementById("item").value;
+            $("ol").append("<li>" + newItem + "</li>");
+        });
     </script>
 </body>
 
