@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gold</title>
+		<meta charset="UTF-8">
+	</head>
+	<style>
+		canvas {
+            height: 600px !important;
+        }
+	</style>
+	<body onload="connect()">
+		<!-- użyj serwera HTTP -->
+		<canvas id="myChart"></canvas>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Gold price',
+                    data: [],
+                    backgroundColor: 'rgb(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132, 1)',
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+		function connect(){
+				$.getJSON("https://api.nbp.pl/api/cenyzlota/last/10/", function(json) {
+					json.forEach(element => {
+						chart.data.labels.push(element.data);
+						chart.data.datasets[0].data.push(element.cena);
+						chart.update();
+					})
+				});
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Currency Exchange</title>
+		<meta charset="UTF-8">
+	</head>
+	<body onload = "connect()">
+		<!-- użyj serwera HTTP -->
+		<h1>Current exchange</h1>
+		<p id="eur"></p>
+		<p id="usd"></p>
+		<p id="gpb"></p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			function connect(){
+				$.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/eur/", function(json) {
+					console.log(json); 
+					$("#eur").append(json.currency+" "+json.code+" "+json.rates[0].mid);
+				});
+				$.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/usd/", function(json) {
+					console.log(json); 
+					$("#usd").append(json.currency+" "+json.code+" "+json.rates[0].mid);
+				});
+				$.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/gbp/", function(json) {
+					console.log(json); 
+					$("#gpb").append(json.currency+" "+json.code+" "+json.rates[0].mid);
+				});
+			}
+		</script>
+
+	</body>
+</html>

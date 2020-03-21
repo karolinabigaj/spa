@@ -23,6 +23,11 @@
 				console.log("Status:", r.status);
 				console.log("Status text:", r.statusText);
 				console.log("-----");
+				
+				if(r.readyState==4 && r.status==200){
+					window.dane = JSON.parse(r.responseText); 
+					console.log(dane);
+				}
 			};
 		</script>
 

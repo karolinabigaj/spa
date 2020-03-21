@@ -5,13 +5,19 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
+		<!-- użyj serwera HTTP -->
 		<h1>Student</h1>
 		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
+		<input type="button" value="Display student's data" onclick="connect()">
 		<p id="personalData"></p>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script>
-
+			function connect(){
+				$.getJSON("karolina_bigaj.json", function(json) {
+					console.log(json); 
+					$("#personalData").append(json.name+" "+json.surname);
+				});
+			}
 		</script>
 
 	</body>

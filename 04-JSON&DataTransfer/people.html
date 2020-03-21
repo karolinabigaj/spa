@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>List of people</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<!-- użyj serwera HTTP -->
+		<h1>List of people</h1>
+		<button type="button" onclick = "connect()">Click to show list</button>
+		<ol id="lista"></ol>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			function connect(){
+				$.getJSON("people.json", function(json) {
+					json.forEach(el => {
+                        let name = el.name;
+                        let surname = el.surname.toUpperCase();
+                        let country = el.country;
+
+                        $("#lista").append(`<li>${name} ${surname}, ${country}</li>`);
+                    });
+				});
+			}
+		</script>
+	</body>
+</html>
