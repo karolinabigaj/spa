@@ -2,8 +2,32 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 600px;
+            text-align: left;
+        }
+        table, th, td{
+            border: black 1px solid;
+        }
+         th{
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    <table id="app">
+        <tr>
+            <th>Title</th><th>Year</th><th>Director</th><th>Budget</th>
+        </tr>
+        <tr v-for="item in films">
+            <td>{{item.title}}</td>
+            <td>{{item.year}}</td>
+            <td>{{item.director}}</td>
+            <td>$ {{threeSpace(item.budget)}}</td>
+        </tr>
+    </table>
   <script>
     var app = new Vue({
       el: '#app',
@@ -34,9 +58,22 @@
             budget: 6000000
           }
         ] 
+        },
+
+        methods: {
+          threeSpace(price) {
+              let strigPrice = price.toString().split("").reverse();
+              let tmp ="";
+              for (let i=0; i<strigPrice.length; i++){
+                  tmp += strigPrice[i];
+                  if (i%3==2){
+                      tmp += " ";
+                  }
+              }
+              return tmp.split("").reverse().join("");
+          }
         }
-      }
-    });
+      });
   </script>
 </body>
 </html>
