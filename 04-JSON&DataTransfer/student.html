@@ -14,7 +14,7 @@
 		<script>
 			function connect(){
 				$.getJSON("karolina_bigaj.json", function(json) {
-					console.log(json); 
+					console.log(json);
 					$("#personalData").append(json.name+" "+json.surname);
 				});
 			}
