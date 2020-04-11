@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>CV</h1>
+<div id="app">
+  <span>Imię: </span><input id="name" v-model="person.name"><br><br>
+  <span>Nazwisko: </span><input id="surname" v-model="person.surname"><br><br>
+  <span>Wiek: </span><input v-model="person.age" type="number"><br><br>
+  <span>Płeć:</span><br>
+  <label><input name="gender" value="Kobieta" type="radio" id="woman" v-model="person.gender">Kobieta</label><br><br>
+  <label><input name="gender" value="Mężczyzna" type="radio" id="man" v-model="person.gender">Mężczyzna</label><br><br>
+  <span>Wykształcenie</span><br>
+  <select v-model="person.education">
+    <option disabled value="">Wybierz jedno</option>
+    <option>Brak</option>
+    <option>Podstawowe</option>
+    <option>Średnie</option>
+    <option>Wyższe</option>
+  </select><br><br>
+  <span>Umiejętności:</span><br>
+  <input value="Obsługa komputera" type="checkbox" id="computer" v-model="person.skills">
+  <label>Obsługa komputera</label><br>
+  <input value="Prawo jazdy" type="checkbox" id="drive" v-model="person.skills">
+  <label>Prawo jazdy</label><br>
+  <input value="Kreatywność" type="checkbox" id="creativity" v-model="person.skills">
+  <label>Kreatywność</label><br>
+  <input value="Praca w zespole" type="checkbox" id="teamwork" v-model="person.skills">
+  <label>Praca w zespole</label><br><br>
+  <button @click="save">Save</button>
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      person: {
+        name: '',
+        surname: '',
+        gender: '',
+        education: '',
+        skills: []
+      }
+    }, mounted() {
+      let temp = JSON.parse(localStorage.getItem('person'));
+      if (temp.name) this.person.name = temp.name;
+      if (temp.surname) this.person.surname = temp.surname;
+      if (temp.age) this.person.age = temp.age;
+      if (temp.gender) this.person.gender = temp.gender;
+      if (temp.education) this.person.education = temp.education;
+      if (temp.skills) this.person.skills = temp.skills;
+    },
+    methods: {
+      save: function () {
+        localStorage.setItem('person', JSON.stringify(this.person));
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

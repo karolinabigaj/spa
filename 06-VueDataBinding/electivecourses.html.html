@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Program studiów</h1>
+<div id="app">
+  <input type="checkbox" id="spa" value="spa" v-model="subjects">
+  <label>Programowanie Aplikacji Webowych SPA</label><br><br>
+  <input type="checkbox" id="zpi" value="zpi" v-model="subjects">
+  <label>Zarządzanie Przedsięwzięciami Informatycznymi</label><br><br>
+  <input type="checkbox" id="bhp" value="bhp" v-model="subjects">
+  <label>Bezpieczeństwo i higiena pracy</label><br><br>
+  <input type="checkbox" id="bsi" value="bsi" v-model="subjects">
+  <label>Bezpieczeństwo Systemów Informacyjnych</label><br><br>
+  <input type="checkbox" id="kp" value="kp" v-model="subjects">
+  <label>Komunikacja w Przdsiębiorstwach</label>
+  <p v-if="amount">Wybranych: {{amount}}</p>
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      subjects: []
+    },
+    computed: {
+      amount: function () {
+        let howMany = this.subjects.length;
+        return howMany;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

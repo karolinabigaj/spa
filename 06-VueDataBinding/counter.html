@@ -2,19 +2,22 @@
 <html>
 <head>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <meta charset="UTF-8">
 </head>
 <body>
 <div id="app">
-  <span>Your name:</span>
-  <input type="text" v-model="name">
-  <p>Message is: {{ name }}</p>
+  <button v-on:click="addClick">{{amount}}</button>
 </div>
 <script>
   var app = new Vue({
     el: '#app',
     data: {
-      name: ''
+      amount: 0,
     },
+    methods :{
+      addClick : function ($event){
+        this.amount = this.amount+1;
+      }}
   });
 </script>
 
