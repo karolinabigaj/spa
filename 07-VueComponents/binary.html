@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id = "app">
+    <change name="8"></change>
+    <change name="170"></change>
+    <change name="204"></change>
+    <change name="3855"></change>
+</div>
+<script>
+    Vue.component('change', {
+        template:'<p>{{name}}(10) = {{toBinary}}(2)</p>',
+        props: ['name'],
+        computed:{
+            toBinary: function (name){
+              let bin = (+this.name).toString(2);
+              console.log(bin);
+              return bin;
+          }
+        }
+    });
+    new Vue({
+        el: '#app',
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="app">
+        <chart :dataset="numbers"></chart>
+    </div>
+    <script>
+        Vue.component('chart', {
+            template: `<canvas id="myChart"></canvas>`,
+            props: {
+                dataset: Array,
+            },
+            mounted: function (){
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data:  {
+                        datasets: [{
+                            data: this.dataset,
+                        }],
+                        labels: this.dataset,
+
+                    },
+                });
+                console.log(this.dataset)
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                numbers: [7,31,365]
+            }
+        })
+    </script>
+</body>
+</html>

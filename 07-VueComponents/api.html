@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body onload = "connect()">
+<div id = "app">
+    <euro></euro>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        components:{
+            'euro': {
+                template : '<div id="eur"></div>',
+            },
+        },
+    });
+    function connect (){
+        $.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/eur/", function(json) {
+            console.log(json);
+            $("#eur").append(json.currency+" "+json.code+" "+json.rates[0].mid);
+        });
+    }
+</script>
+</body>
+</html>

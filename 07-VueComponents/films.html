@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id = "app">
+        <favourite-movie-one></favourite-movie-one>
+        <favourite-movie-two></favourite-movie-two>
+        <favourite-movie-three></favourite-movie-three>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            components:{
+                'favourite-movie-one': {
+                    template : '<div><h1>Tajemniczy świat Arietty</h1><p>Hiromasa Yonebayashi, 2010</p></div>'
+                },
+                'favourite-movie-two': {
+                    template : '<div><h1>Koralina i tajemnicze drzwi</h1><p>Henry Selick, 2009</p></div>'
+                },
+                'favourite-movie-three': {
+                    template : '<div><h1>Klaus</h1><p>Sergio Pablos, 2019</p></div>'
+                },
+            }
+        });
+    </script>
+</body>
+</html>

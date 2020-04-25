@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id = "app">
+        <uek-university></uek-university>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            components:{
+                'uek-university': {
+                    template : '<div><h1>Cracow University of Economics</h1><p>31-510 Kraków, Rakowicka 27, POLAND</p></div>'
+                },
+            }
+        });
+    </script>
+</body>
+</html>

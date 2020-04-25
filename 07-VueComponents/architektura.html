@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id = "app">
+        <h1>Architektura von Neumanna</h1>
+        <ul>
+            <list></list>
+        </ul>
+    </div>
+    <script>
+       let rawData = {
+           items: [
+               'Pamięć',
+               'Jednostki stresujące',
+               'Jednostki arytmetyczno-logiczne',
+               'Urządzenia wejścia/wyjścia',
+           ]
+       };
+
+       Vue.component('list', {
+           template:
+               `<div>
+                <li v-for="item in items" :item="item">{{item}}</li>
+                </div>`,
+           props: ['item'],
+           data() {
+               return rawData
+           },
+       });
+       new Vue({
+           el: '#app',
+
+       })
+    </script>
+</body>
+</html>
